@@ -1,0 +1,128 @@
+/* ========================= */
+/* 🔥 BASE FOOTER (DARK - HOME) */
+/* ========================= */
+
+.footer {
+  width: 100%;
+  padding: 18px 40px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  background: #0f172a;
+  border-top: 1px solid rgba(255,255,255,0.08);
+
+  color: rgba(255,255,255,0.7);
+  font-size: 14px;
+
+  transition: all 0.3s ease;
+}
+
+/* LEFT TEXT */
+.footer-text {
+  font-size: 14px;
+}
+
+.name {
+  color: #a5b4fc;
+  font-weight: 500;
+}
+
+/* ========================= */
+/* 🔗 SOCIAL LINKS */
+/* ========================= */
+
+.footer-socials {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  text-decoration: none;
+  color: #fff;
+
+  opacity: 0.8;
+  transition: all 0.25s ease;
+}
+
+/* ICON */
+.social-link svg {
+  width: 18px;
+  height: 18px;
+  transition: transform 0.25s ease;
+}
+
+/* TEXT */
+.social-link span {
+  font-size: 14px;
+  position: relative;
+  top: 1.5px;
+  margin-left: -2px;
+}
+
+/* HOVER */
+.social-link:hover {
+  opacity: 1;
+  transform: translateY(-2px);
+  color: #6366f1;
+}
+
+.social-link:hover svg {
+  transform: scale(1.1);
+}
+
+/* ========================= */
+/* 🌟 LIGHT FOOTER (WELCOME) */
+/* ========================= */
+.light-footer {
+  background: linear-gradient(135deg, #faf5ff, #eef2ff);
+
+  color: #4c1d95;
+  border-top: 1px solid rgba(139,92,246,0.15);
+
+  box-shadow: 0 -6px 25px rgba(138, 92, 246, 0.041);
+}
+
+/* TEXT */
+.light-footer .footer-text {
+  color: #6b21a8;
+}
+
+.light-footer .name {
+  color: #7c3aed;
+}
+
+/* LINKS */
+.light-footer .social-link {
+  color: #4c1d95;
+}
+
+.light-footer .social-link:hover {
+  color: #7c3aed;
+}
+.light-footer .social-link span {
+  position: relative;
+  top: 2px; /* 🔥 adjust 2px–4px as needed */
+}
+/* ========================= */
+/* 📱 RESPONSIVE */
+/* ========================= */
+
+@media (max-width: 600px) {
+  .footer {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+    padding: 16px 20px;
+  }
+
+  .footer-socials {
+    justify-content: center;
+  }
+}

@@ -1,0 +1,102 @@
+.bird-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 91vh;
+
+  /* 🔥 upgraded background */
+  background: linear-gradient(180deg, #38bdf8, #1e293b);
+  color: white;
+  font-family: "Poppins", sans-serif;
+
+  position: relative;
+  overflow: hidden;
+}
+
+/* 🔙 BACK BUTTON (NEW) */
+.bird-back {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+
+  padding: 8px 14px;
+  border-radius: 10px;
+  border: none;
+
+  background: rgba(255,255,255,0.2);
+  color: #fff;
+
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.bird-back:hover {
+  background: #6366f1;
+  transform: translateY(-2px);
+}
+
+/* 🎮 CANVAS */
+canvas {
+  border-radius: 16px;
+
+  /* 🔥 better sky feel */
+  background: linear-gradient(#7dd3fc, #0284c7);
+
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+
+/* 🔥 START SCREEN */
+.start-screen {
+  text-align: center;
+
+  /* 🔥 glass UI */
+  background: rgba(255,255,255,0.1);
+  padding: 25px;
+  border-radius: 20px;
+
+  backdrop-filter: blur(15px);
+}
+
+/* 🔥 TITLE */
+.start-screen h1 {
+  font-size: 26px;
+  margin-bottom: 10px;
+}
+
+/* 🔥 BUTTON */
+.start-screen button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  color: white;
+
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.start-screen button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(34,197,94,0.4);
+}
+
+/* 🎯 SCORE */
+.score {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+/* 📱 MOBILE */
+@media (max-width: 480px) {
+  canvas {
+    width: 300px;
+    height: 400px;
+  }
+
+  .start-screen h1 {
+    font-size: 22px;
+  }
+}

@@ -1,0 +1,252 @@
+/* 🔥 MAIN CONTAINER */
+.ttt-container {
+  min-height: 100vh;
+  background: radial-gradient(circle at top, #1e293b, #020617 80%);
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-family: "Poppins", sans-serif;
+  color: #fff;
+
+  position: relative;
+  overflow: hidden;
+}
+
+/* 🌌 BACKGROUND GLOW */
+.ttt-container::before {
+  content: "";
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background: #6366f1;
+  filter: blur(120px);
+  opacity: 0.25;
+  top: -100px;
+  left: -100px;
+}
+
+/* 🔙 BACK BUTTON */
+.back-btn {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(10px);
+
+  padding: 8px 14px;
+  border-radius: 10px;
+
+  cursor: pointer;
+  font-size: 14px;
+
+  border: 1px solid rgba(255,255,255,0.1);
+
+  transition: all 0.25s ease;
+}
+
+.back-btn:hover {
+  background: rgba(99,102,241,0.4);
+  transform: translateY(-2px);
+}
+
+/* ================= MODE CARD ================= */
+
+.mode-card {
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(20px);
+
+  padding: 40px 50px;
+  border-radius: 20px;
+
+  text-align: center;
+
+  border: 1px solid rgba(255,255,255,0.1);
+  box-shadow: 0 25px 70px rgba(0,0,0,0.5);
+}
+
+/* TITLE */
+.ttt-title {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+/* SUBTITLE */
+.ttt-subtitle {
+  opacity: 0.7;
+  margin-bottom: 25px;
+}
+
+/* MODE BUTTONS */
+.mode-select {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+.mode-btn {
+  padding: 14px 22px;
+  border-radius: 14px;
+  border: none;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  font-size: 14px;
+  color: white;
+
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  cursor: pointer;
+
+  transition: all 0.3s ease;
+}
+
+.mode-btn:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 12px 35px rgba(99,102,241,0.5);
+}
+
+/* ================= GAME ================= */
+
+.game-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* STATUS */
+.status {
+  margin: 10px 0 20px;
+  font-size: 18px;
+  opacity: 0.9;
+}
+
+/* WINNER */
+.winner {
+  color: #22c55e;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* BOARD */
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 110px);
+  gap: 14px;
+}
+
+/* CELL */
+.cell {
+  width: 110px;
+  height: 110px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 36px;
+  font-weight: bold;
+
+  border-radius: 18px;
+
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(10px);
+
+  border: 1px solid rgba(255,255,255,0.1);
+
+  cursor: pointer;
+
+  transition: all 0.25s ease;
+}
+
+/* HOVER */
+.cell:hover {
+  background: rgba(99,102,241,0.35);
+  transform: scale(1.06);
+  box-shadow: 0 8px 25px rgba(99,102,241,0.4);
+}
+
+/* CLICK */
+.cell:active {
+  transform: scale(0.95);
+}
+
+/* ACTION BUTTONS */
+.actions {
+  margin-top: 25px;
+  display: flex;
+  gap: 12px;
+}
+
+.actions button {
+  padding: 10px 18px;
+  border-radius: 12px;
+  border: none;
+
+  background: rgba(255,255,255,0.08);
+  color: white;
+
+  cursor: pointer;
+
+  border: 1px solid rgba(255,255,255,0.1);
+
+  transition: all 0.3s ease;
+}
+
+.actions button:hover {
+  background: rgba(99,102,241,0.4);
+  transform: translateY(-2px);
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 768px) {
+  .board {
+    grid-template-columns: repeat(3, 90px);
+  }
+
+  .cell {
+    width: 90px;
+    height: 90px;
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 480px) {
+  .mode-select {
+    flex-direction: column;
+  }
+
+  .mode-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .actions button {
+    width: 100%;
+  }
+
+  .board {
+    grid-template-columns: repeat(3, 75px);
+  }
+
+  .cell {
+    width: 75px;
+    height: 75px;
+    font-size: 24px;
+  }
+}
