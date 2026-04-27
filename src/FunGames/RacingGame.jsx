@@ -20,6 +20,31 @@ export default function RacingGame() {
   const coins = useRef([]);
 
   const speed = useRef(3);
+  const startTime = useRef(Date.now());
+
+  const lanes = [70, 120, 170, 220];
+
+  /* 🔥 SAVE SCORE FOR DASHBOARD */
+  const saveScore = (finalScore) => {
+    const scores = JSON.parse(localStorage.getItem("scores")) || {};
+
+    if (!scores.racing) {
+      scores.racing = {
+        best: 0,
+        played: 0,
+        lastPlayed: Date.now(),
+      };
+    }
+
+    if (finalScore > scores.racing.best) {
+      scores.racing.best = finalScore;
+    }
+
+    scores.racing.played += 1;
+    scores.racing.lastPlayed = Date.now();
+
+    localStorage.setItem("scores", JSON.stringify(scores));
+  };
 
   /* 🎮 START */
   const startGame = () => {
@@ -27,19 +52,21 @@ export default function RacingGame() {
     obstacles.current = [];
     coins.current = [];
     speed.current = 3;
+    startTime.current = Date.now();
+
     setScore(0);
     setStarted(true);
   };
 
   /* 🎮 CONTROL */
   const moveLeft = () => {
-    carX.current -= 30;
-    if (carX.current < 50) carX.current = 50;
+    carX.current -= 50;
+    if (carX.current < 60) carX.current = 60;
   };
 
   const moveRight = () => {
-    carX.current += 30;
-    if (carX.current > 230) carX.current = 230;
+    carX.current += 50;
+    if (carX.current > 220) carX.current = 220;
   };
 
   /* ⌨️ KEYBOARD */
@@ -65,23 +92,19 @@ export default function RacingGame() {
     const gameLoop = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      /* 🌌 BACKGROUND */
       const bg = ctx.createLinearGradient(0, 0, 0, canvas.height);
       bg.addColorStop(0, "#0f172a");
       bg.addColorStop(1, "#020617");
       ctx.fillStyle = bg;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      /* 🛣 ROAD */
       ctx.fillStyle = "#1e293b";
       ctx.fillRect(50, 0, 220, canvas.height);
 
-      /* 🛣 SIDE SHADOW */
       ctx.fillStyle = "rgba(0,0,0,0.4)";
       ctx.fillRect(50, 0, 10, canvas.height);
       ctx.fillRect(260, 0, 10, canvas.height);
 
-      /* 🛣 LANE DASH */
       roadOffset.current += speed.current * 2;
 
       ctx.strokeStyle = "#facc15";
@@ -92,12 +115,11 @@ export default function RacingGame() {
       ctx.moveTo(160, -(roadOffset.current % 40));
       ctx.lineTo(160, canvas.height);
       ctx.stroke();
-
       ctx.setLineDash([]);
 
-      /* 🚗 PLAYER CAR */
       const carY = 420;
 
+      /* 🚗 PLAYER */
       ctx.fillStyle = "rgba(0,0,0,0.4)";
       ctx.fillRect(carX.current + 5, carY + 70, 30, 10);
 
@@ -118,26 +140,42 @@ export default function RacingGame() {
       ctx.fillRect(carX.current + 38, carY + 45, 5, 15);
 
       /* 🚧 SPAWN ENEMY */
-      if (Math.random() < 0.025) {
-        obstacles.current.push({
-          x: Math.random() * 160 + 60,
-          y: -80,
-          type: Math.floor(Math.random() * 3),
-          color: ["#ef4444", "#3b82f6", "#f97316"][
-            Math.floor(Math.random() * 3)
-          ],
-        });
-      }
-
-      /* 🪙 SPAWN COINS */
       if (Math.random() < 0.02) {
-        coins.current.push({
-          x: Math.random() * 160 + 60,
-          y: -20,
-        });
+        const lane = lanes[Math.floor(Math.random() * lanes.length)];
+
+        const isBlocked = obstacles.current.some(
+          (o) => o.x === lane && o.y < 150
+        );
+
+        if (!isBlocked) {
+          obstacles.current.push({
+            x: lane,
+            y: -80,
+            type: Math.floor(Math.random() * 3),
+            color: ["#ef4444", "#3b82f6", "#f97316"][
+              Math.floor(Math.random() * 3)
+            ],
+          });
+        }
       }
 
-      /* 🚧 DRAW ENEMY CARS */
+      /* 🪙 COINS */
+      if (Math.random() < 0.015) {
+        const lane = lanes[Math.floor(Math.random() * lanes.length)];
+
+        const isBlocked = coins.current.some(
+          (c) => c.x === lane && c.y < 80
+        );
+
+        if (!isBlocked) {
+          coins.current.push({
+            x: lane,
+            y: -20,
+          });
+        }
+      }
+
+      /* 🚧 DRAW ENEMY */
       obstacles.current.forEach((obs) => {
         obs.y += speed.current;
 
@@ -162,24 +200,13 @@ export default function RacingGame() {
         ctx.fillRect(obs.x + 5, obs.y - 4, 8, 4);
         ctx.fillRect(obs.x + 27, obs.y - 4, 8, 4);
 
-        /* variation */
-        if (obs.type === 1) {
-          ctx.fillStyle = "#1e293b";
-          ctx.fillRect(obs.x + 8, obs.y + 35, 24, 10);
-        }
-
-        if (obs.type === 2) {
-          ctx.fillStyle = "#000";
-          ctx.fillRect(obs.x + 10, obs.y + 25, 20, 8);
-        }
-
-        /* collision */
         if (
           carX.current < obs.x + 40 &&
           carX.current + 40 > obs.x &&
           carY < obs.y + 70 &&
           carY + 70 > obs.y
         ) {
+          saveScore(Math.floor(score)); // ✅ FIX
           setStarted(false);
         }
       });
@@ -191,23 +218,9 @@ export default function RacingGame() {
         const cx = coin.x + 15;
         const cy = coin.y + 15;
 
-        const glow = ctx.createRadialGradient(cx, cy, 2, cx, cy, 20);
-        glow.addColorStop(0, "#fde047");
-        glow.addColorStop(1, "transparent");
-
-        ctx.fillStyle = glow;
-        ctx.beginPath();
-        ctx.arc(cx, cy, 20, 0, Math.PI * 2);
-        ctx.fill();
-
         ctx.fillStyle = "#facc15";
         ctx.beginPath();
         ctx.arc(cx, cy, 10, 0, Math.PI * 2);
-        ctx.fill();
-
-        ctx.fillStyle = "#fff";
-        ctx.beginPath();
-        ctx.arc(cx - 3, cy - 3, 3, 0, Math.PI * 2);
         ctx.fill();
 
         if (
@@ -224,17 +237,17 @@ export default function RacingGame() {
       obstacles.current = obstacles.current.filter((o) => o.y < 500);
       coins.current = coins.current.filter((c) => c.y < 500);
 
-      setScore((s) => s + 0.05);
+      const elapsed = (Date.now() - startTime.current) / 1000;
+      speed.current = 3 + Math.min(elapsed / 60, 3);
 
-      if (score > 50) speed.current = 4;
-      if (score > 120) speed.current = 5;
+      setScore((s) => s + 0.05);
 
       frame = requestAnimationFrame(gameLoop);
     };
 
     frame = requestAnimationFrame(gameLoop);
     return () => cancelAnimationFrame(frame);
-  }, [started, score]);
+  }, [started]);
 
   /* 🏆 HIGH SCORE */
   useEffect(() => {
@@ -246,7 +259,15 @@ export default function RacingGame() {
 
   return (
     <div className="race-container">
-      <button className="race-back" onClick={() => navigate("/fun")}>
+   <button
+  className="race-back"
+  onClick={() => {
+    if (started) {
+      saveScore(Math.floor(score)); // ✅ save before exit
+    }
+    navigate("/fun");
+  }}
+>
         ← Back
       </button>
 

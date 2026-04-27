@@ -23,20 +23,16 @@ const resetScores = () => {
 
 /* 🎮 GAME IMAGES */
 const gameImages = {
-  ticTacToe:
-    "https://images.unsplash.com/photo-1611996575749-79a3a250f948?q=80&w=800",
-  html:
-    "https://images.unsplash.com/photo-1581276879432-15e50529f34b?q=80&w=800",
-  css:
-    "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=800",
-  js:
-    "https://images.unsplash.com/photo-1555066931-bf19f8fd1085?q=80&w=800",
-  react:
-    "https://images.unsplash.com/photo-1633356122544-f134324a6cee?q=80&w=800",
-  snake:
-    "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=800",
-  flyingBird:
-    "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=800",
+  ticTacToe: "/images/tictactoe.png",   // (agar hai to)
+  html: "/images/quiz.png",             // optional
+  css: "/images/quiz.png",               // ✅ FIX (empty tha pehle)
+  js: "/images/quiz.png",
+  react: "/images/quiz.png",
+
+  snake: "/images1/snake.png",
+  flyingBird: "/images1/bird.png",
+  racing: "/images1/racing.png",
+  typing: "/images1/typing.png", // ✅ NEW ADD
 };
 
 /* 🧠 FORMAT NAME */
@@ -49,6 +45,7 @@ const formatName = (name) => {
     react: "React Quiz",
     snake: "Snake Game",
     flyingBird: "Flying Bird",
+    racing: "Car Racing",
   };
 
   return map[name] || name;
@@ -65,7 +62,7 @@ export default function Dashboard() {
 
   /* 🔥 TOTAL CALCULATION */
   Object.entries(scores).forEach(([game, data]) => {
-    if (game === "snake" || game === "flyingBird") {
+    if (game === "snake" || game === "flyingBird" || game === "racing") {
       totalGames += data.played || 0;
     } else {
       const wins = data.win || 0;
@@ -133,7 +130,7 @@ export default function Dashboard() {
           .sort((a, b) => (b[1].lastPlayed || 0) - (a[1].lastPlayed || 0))
           .map(([game, data]) => {
             const isCustomGame =
-              game === "snake" || game === "flyingBird";
+              game === "snake" || game === "flyingBird" || game === "racing";
 
             return (
               <div key={game} className="game-card">

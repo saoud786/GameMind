@@ -8,20 +8,20 @@
 }
 
 /* ========================= */
-/* 🔥 PAGE */
+/* 🌐 PAGE */
 /* ========================= */
 .brain-page {
   min-height: 100vh;
   padding: 100px 40px 40px;
 
-  background: radial-gradient(circle at top, #1e293b, #0f172a);
-  color: white;
+  background: linear-gradient(135deg, #f8fafc, #e5e7eb);
+  color: #111827;
 
   position: relative;
 }
 
 /* ========================= */
-/* 🔥 CONTAINER */
+/* 📦 CONTAINER */
 /* ========================= */
 .brain-container {
   max-width: 1200px;
@@ -29,21 +29,50 @@
 }
 
 /* ========================= */
-/* 🔥 TITLE */
+/* 🔥 TITLE (CENTER FIXED) */
 /* ========================= */
 .brain-title {
-  margin-bottom: 40px;
+  margin-bottom: 50px;
 
   display: flex;
+  justify-content: center;   /* ✅ CENTER */
   align-items: center;
   gap: 10px;
 
-  font-size: 30px;
-  font-weight: 600;
+  font-size: 32px;
+  font-weight: 700;
+
+  text-align: center;        /* ✅ EXTRA SAFETY */
+}
+/* ========================= */
+/* ✨ PREMIUM UNDERLINE */
+/* ========================= */
+.brain-title {
+  position: relative; /* important */
 }
 
+.brain-title::after {
+  content: "";
+  position: absolute;
+
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -5px;
+
+  width: 210px;      /* short = premium */
+  height: 2px;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #111827,
+    transparent
+  );
+
+  opacity: 0.7;
+}
 /* ========================= */
-/* 🔥 GRID (IMPORTANT FIX) */
+/* 🔲 GRID */
 /* ========================= */
 .brain-grid {
   display: grid;
@@ -52,23 +81,23 @@
 }
 
 /* ========================= */
-/* 🔥 CARD */
+/* 💎 CARD */
 /* ========================= */
 .brain-card {
   border-radius: 20px;
   overflow: hidden;
 
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(14px);
+  background: #ffffffd6;
+  border: 1px solid #e5e7eb;
 
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.06);
 
-  transition: 0.25s ease;
+  transition: 0.3s ease;
 }
 
-/* 🔥 HOVER */
 .brain-card:hover {
-  border: 1px solid rgba(99,102,241,0.5);
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.12);
 }
 
 /* ========================= */
@@ -88,7 +117,7 @@
 }
 
 .brain-card:hover .card-image img {
-  transform: scale(1.05); /* 🔥 light zoom */
+  transform: scale(1.05);
 }
 
 /* ========================= */
@@ -101,11 +130,12 @@
 .card-content h3 {
   font-size: 18px;
   margin-bottom: 6px;
+  font-weight: 600;
 }
 
 .card-content p {
   font-size: 13px;
-  opacity: 0.75;
+  color: #6b7280;
   margin-bottom: 14px;
 }
 
@@ -130,8 +160,8 @@
 }
 
 .play-btn:hover {
-  background: linear-gradient(135deg, #5b5ff9, #7c3aed);
   transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(99,102,241,0.3);
 }
 
 /* ========================= */
@@ -147,26 +177,26 @@
   gap: 6px;
 
   padding: 8px 14px;
-  border-radius: 10px;
+  border-radius: 12px;
 
   font-size: 14px;
   font-weight: 500;
 
-  background: rgba(255,255,255,0.12);
-  color: #fff;
+  background: #ffffff;
+  color: #111827;
 
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255,255,255,0.15);
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 
   cursor: pointer;
-  transition: 0.25s;
+  transition: 0.25s ease;
   z-index: 10;
 }
 
 .brain-home-btn:hover {
-  background: rgba(99,102,241,0.35);
+  background: #111827;
+  color: white;
   transform: translateY(-2px);
-  box-shadow: 0 6px 15px rgba(99,102,241,0.3);
 }
 
 /* ========================= */
@@ -186,21 +216,19 @@
 
   border-radius: 50%;
 
-  background: rgba(255,255,255,0.1);
-  backdrop-filter: blur(10px);
-
-  border: 1px solid rgba(255,255,255,0.2);
+  background: white;
+  border: 1px solid #e5e7eb;
 
   cursor: pointer;
 
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
   transition: 0.25s ease;
 }
 
 .fav-btn svg {
-  color: #cbd5f5;
+  color: #9ca3af;
 }
 
-/* ⭐ ACTIVE */
 .fav-btn.active {
   background: rgba(255, 215, 0, 0.15);
   border: 1px solid rgba(255, 215, 0, 0.4);
@@ -213,7 +241,6 @@
 
 .fav-btn:hover {
   transform: scale(1.1);
-  background: rgba(255,255,255,0.2);
 }
 
 /* ========================= */
@@ -232,7 +259,6 @@
   border-radius: 6px;
 
   font-size: 11px;
-  white-space: nowrap;
 
   opacity: 0;
   transition: 0.2s ease;
@@ -243,7 +269,7 @@
 }
 
 /* ========================= */
-/* 📱 MOBILE */
+/* 📱 RESPONSIVE */
 /* ========================= */
 @media (max-width: 768px) {
   .brain-page {
@@ -253,6 +279,6 @@
 
 @media (max-width: 480px) {
   .brain-title {
-    font-size: 22px;
+    font-size: 24px;
   }
 }

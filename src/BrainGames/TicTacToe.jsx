@@ -119,11 +119,11 @@ export default function TicTacToe() {
           )}
         </div>
 
-        <div className="board">
+       <div className="ttt-board">
           {board.map((cell, index) => (
             <div
               key={index}
-              className="cell"
+             className="ttt-cell"
               onClick={() => handleClick(index)}
             >
               {cell}

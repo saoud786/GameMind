@@ -8,51 +8,62 @@ export default function Favorites() {
   const [favorites, setFavorites] = useState([]);
 
   /* 🎮 ALL GAMES (UPDATED 🔥) */
-  const games = [
-    {
-      id: "ticTacToe",
-      title: "Tic Tac Toe",
-      img: "https://images.unsplash.com/photo-1611996575749-79a3a250f948?q=80&w=800",
-      path: "/tic-tac-toe",
-    },
-    {
-      id: "quiz",
-      title: "Tech Quiz",
-      img: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=800",
-      path: "/quiz",
-    },
-    {
-      id: "memory",
-      title: "Memory Game",
-      img: "https://images.unsplash.com/photo-1596838132731-3301c3fd4317?q=80&w=800",
-      path: "/memory",
-    },
-    {
-      id: "slidingPuzzle",
-      title: "Sliding Puzzle",
-      img: "https://images.unsplash.com/photo-1606166325683-2a1c6fba5888?q=80&w=800",
-      path: "/sliding-puzzle",
-    },
-    {
-      id: "sudoku",
-      title: "Sudoku",
-      img: "https://images.unsplash.com/photo-1584697964403-5b2b6e7d7a5c?q=80&w=800",
-      path: "/sudoku",
-    },
-    {
-      id: "snake",
-      title: "Snake Game",
-      img: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=800",
-      path: "/snake",
-    },
-    {
-      id: "flyingBird", // ✅ NEW
-      title: "Flying Bird",
-      img: "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=800",
-      path: "/flying-bird",
-    },
-  ];
-
+ const games = [
+  {
+    id: "ticTacToe",
+    title: "Tic Tac Toe",
+    img: "/images/tictactoe.png",
+    path: "/tic-tac-toe",
+  },
+  {
+    id: "quiz",
+    title: "Tech Quiz",
+    img: "/images/quiz.png",
+    path: "/quiz",
+  },
+  {
+    id: "memory",
+    title: "Memory Game",
+    img: "/images/memory.png",
+    path: "/memory",
+  },
+  {
+    id: "slidingPuzzle",
+    title: "Sliding Puzzle",
+    img: "/images1/puzzle.png",
+    path: "/sliding-puzzle",
+  },
+  {
+    id: "sudoku",
+    title: "Sudoku",
+    img: "/images/sudoku.png",
+    path: "/sudoku",
+  },
+  {
+    id: "snake",
+    title: "Snake Game",
+    img: "/images1/snake.png",
+    path: "/snake",
+  },
+  {
+    id: "flyingBird",
+    title: "Flying Bird",
+    img: "/images1/bird.png", // ✅ FIXED (pehle snake.png tha)
+    path: "/flying-bird",
+  },
+  {
+    id: "racing",
+    title: "Car Racing",
+    img: "/images1/racing.png",
+    path: "/racing",
+  },
+  {
+    id: "typing",
+    title: "Typing Speed",
+    img: "/images1/typing.png",
+    path: "/typing",
+  },
+];
   /* 🔥 LOAD FAVORITES */
   useEffect(() => {
     const fav = JSON.parse(localStorage.getItem("favorites")) || [];

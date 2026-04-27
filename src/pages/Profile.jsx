@@ -221,16 +221,7 @@ export default function Profile() {
         <p>{user.email}</p>
 
         {/* 📊 STATS */}
-        <div className="stats">
-          <div>
-            <span>0</span>
-            <p>Games</p>
-          </div>
-          <div>
-            <span>0</span>
-            <p>Score</p>
-          </div>
-        </div>
+      
 
         {/* 🚪 LOGOUT */}
         <button className="logout-btn" onClick={handleLogout}>

@@ -13,23 +13,30 @@ export default function FunGames() {
       id: "snake",
       title: "Snake Game",
       desc: "Classic snake game with smooth controls.",
-      img: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=800",
+       img: "/images1/snake.png",
       path: "/snake",
     },
     {
       id: "flyingBird",
       title: "Flying Bird",
       desc: "Tap to fly and avoid pipes. Super addictive game!",
-      img: "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=800",
+    img: "/images1/bird.png",
       path: "/flying-bird",
     },
     {
       id: "racing", // ✅ NEW GAME ADDED
       title: "Car Racing",
       desc: "Avoid traffic & collect coins for high score!",
-      img: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800",
+    img: "/images1/racing.png",
       path: "/racing",
     },
+    {
+  id: "typing",
+  title: "Typing Speed",
+  desc: "Test your typing speed and improve your typing skills!",
+ img: "/images1/typing.png",
+  path: "/typing",
+},
   ];
 
   /* 🔥 LOAD FAVORITES */

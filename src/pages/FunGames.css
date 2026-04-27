@@ -8,23 +8,23 @@
 }
 
 /* ========================= */
-/* 🔥 PAGE */
+/* 🌐 PAGE */
 /* ========================= */
 .fun-page {
   min-height: 100vh;
   padding: 100px 40px 40px;
 
-  background: radial-gradient(circle at top, #1e293b, #0f172a);
-  color: white;
+  background: linear-gradient(135deg, #f8fafc, #e5e7eb);
+  color: #111827;
 
   position: relative;
 }
 
 /* ========================= */
-/* 🔥 CONTAINER */
+/* 📦 CONTAINER */
 /* ========================= */
 .fun-container {
-  max-width: 1200px; /* 🔥 same as brain */
+  max-width: 1200px;
   margin: 0 auto;
 }
 
@@ -35,40 +35,70 @@
   margin-bottom: 40px;
 
   display: flex;
+  justify-content: center;   /* ✅ ADD THIS */
   align-items: center;
   gap: 10px;
 
   font-size: 30px;
   font-weight: 600;
+
+  text-align: center;        /* ✅ EXTRA SAFE */
+}
+/* UNDERLINE (MINIMAL PREMIUM) */
+/* PREMIUM UNDERLINE */
+.fun-title {
+  position: relative;
+}
+
+.fun-title::after {
+  content: "";
+  position: absolute;
+
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -6px;
+
+  width: 190px;              /* shorter = premium */
+  height: 2px;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #111827,
+    transparent
+  );
+
+  opacity: 0.7;
 }
 
 /* ========================= */
-/* 🔥 GRID */
+/* 🔲 GRID */
 /* ========================= */
 .fun-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 320px)); /* 🔥 FIX */
-  justify-content: center; /* 🔥 center */
+  grid-template-columns: repeat(auto-fit, minmax(260px, 320px));
+  justify-content: center;
   gap: 25px;
 }
 
 /* ========================= */
-/* 🔥 CARD */
+/* 💎 CARD */
 /* ========================= */
 .fun-card {
   border-radius: 20px;
   overflow: hidden;
 
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(14px);
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
 
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.06);
 
-  transition: 0.25s ease;
+  transition: 0.3s ease;
 }
 
 .fun-card:hover {
-  border: 1px solid rgba(99,102,241,0.5);
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.12);
 }
 
 /* ========================= */
@@ -101,16 +131,17 @@
 .card-content h3 {
   font-size: 18px;
   margin-bottom: 6px;
+  font-weight: 600;
 }
 
 .card-content p {
   font-size: 13px;
-  opacity: 0.75;
+  color: #6b7280;
   margin-bottom: 14px;
 }
 
 /* ========================= */
-/* 🎮 BUTTON */
+/* 🎮 PLAY BUTTON */
 /* ========================= */
 .play-btn {
   display: inline-flex;
@@ -131,6 +162,7 @@
 
 .play-btn:hover {
   transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(99,102,241,0.3);
 }
 
 /* ========================= */
@@ -146,28 +178,29 @@
   gap: 6px;
 
   padding: 8px 14px;
-  border-radius: 10px;
+  border-radius: 12px;
 
   font-size: 14px;
   font-weight: 500;
 
-  background: rgba(255,255,255,0.12);
-  color: #fff;
+  background: #ffffff;
+  color: #111827;
 
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255,255,255,0.15);
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 
   cursor: pointer;
-  transition: 0.25s;
+  transition: 0.25s ease;
 }
 
 .fun-home-btn:hover {
-  background: rgba(99,102,241,0.35);
+  background: #111827;
+  color: white;
   transform: translateY(-2px);
 }
 
 /* ========================= */
-/* ⭐ FAVORITE */
+/* ⭐ FAVORITE BUTTON */
 /* ========================= */
 .fav-btn {
   position: absolute;
@@ -183,19 +216,26 @@
 
   border-radius: 50%;
 
-  background: rgba(255,255,255,0.1);
-  border: 1px solid rgba(255,255,255,0.2);
+  background: white;
+  border: 1px solid #e5e7eb;
 
   cursor: pointer;
+
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  transition: 0.25s ease;
 }
 
 .fav-btn svg {
-  color: #cbd5f5;
+  color: #9ca3af;
 }
 
 .fav-btn.active svg {
   color: gold;
   fill: gold;
+}
+
+.fav-btn:hover {
+  transform: scale(1.1);
 }
 
 /* ========================= */

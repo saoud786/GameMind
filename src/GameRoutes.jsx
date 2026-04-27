@@ -11,7 +11,7 @@ import Sudoku from "./BrainGames/Sudoku";
 import SnakeGame from "./FunGames/SnakeGame";
 import FlyingBird from "./FunGames/FlyingBird";
 import RacingGame from "./FunGames/RacingGame"; // ✅ NEW ADDED
-
+import TypingGame from "./FunGames/TypingGame";
 /* 🧩 COMMON */
 import Footer from "./components/Footer";
 import ProtectedRoute from "./components/ProtectedRoute";
@@ -47,6 +47,7 @@ const GameRoutes = (
 
     {/* 🏎️ NEW RACING GAME */}
     <Route path="/racing" element={withLayout(RacingGame)} />
+    <Route path="/typing" element={withLayout(TypingGame)} /> 
   </>
 );
 

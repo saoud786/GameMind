@@ -8,44 +8,43 @@ export default function BrainGames() {
   const [favorites, setFavorites] = useState([]);
 
   /* 🎮 GAME LIST (FINAL 🔥) */
-  const games = [
-    {
-      id: "ticTacToe",
-      title: "Tic Tac Toe",
-      desc: "Challenge your strategy and logic skills.",
-      img: "https://images.unsplash.com/photo-1611996575749-79a3a250f948?q=80&w=800",
-      path: "/tic-tac-toe"
-    },
-    {
-      id: "quiz",
-      title: "Tech Quiz",
-      desc: "Test your knowledge of HTML, CSS, JS & React.",
-      img: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=800",
-      path: "/quiz"
-    },
-    {
-      id: "memory",
-      title: "Memory Game",
-      desc: "Test and improve your memory skills.",
-      img: "https://images.unsplash.com/photo-1596838132731-3301c3fd4317?q=80&w=800",
-      path: "/memory"
-    },
-    {
-      id: "slidingPuzzle", // ✅ FIXED ID
-      title: "Sliding Puzzle",
-      desc: "Arrange tiles in correct order.",
-      img: "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=800",
-      path: "/sliding-puzzle"
-    },
-    {
-      id: "sudoku", // ✅ NEW
-      title: "Sudoku",
-      desc: "Test your logic with number puzzle.",
-     img: "https://images.unsplash.com/photo-1586165368502-1bad197a6461?w=800",
-      path: "/sudoku"
-    },
-    
-  ];
+const games = [
+  {
+    id: "ticTacToe",
+    title: "Tic Tac Toe",
+    desc: "Challenge your strategy and logic skills.",
+    img: "/images/tictactoe.png",
+    path: "/tic-tac-toe"
+  },
+  {
+    id: "quiz",
+    title: "Tech Quiz",
+    desc: "Test your knowledge of HTML, CSS, JS & React.",
+    img: "/images/quiz.png",
+    path: "/quiz"
+  },
+  {
+    id: "memory",
+    title: "Memory Game",
+    desc: "Test and improve your memory skills.",
+    img: "/images/memory.png",
+    path: "/memory"
+  },
+  {
+    id: "slidingPuzzle",
+    title: "Sliding Puzzle",
+    desc: "Arrange tiles in correct order.",
+    img: "/images/puzzle.png",
+    path: "/sliding-puzzle"
+  },
+  {
+    id: "sudoku",
+    title: "Sudoku",
+    desc: "Test your logic with number puzzle.",
+    img: "/images/sudoku.png",
+    path: "/sudoku"
+  }
+];
 
   /* 🔥 LOAD FAVORITES */
   useEffect(() => {
